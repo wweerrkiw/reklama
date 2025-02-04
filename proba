@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Clicker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        #coins {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        button {
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.1s;
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        #clickButton {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #adButton {
+            background-color: #2196F3;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="coins">Монеты: 0</div>
+        <button id="clickButton" onclick="clickCoin()">Клик</button>
+        <button id="adButton" onclick="watchAd()">Смотреть рекламу (+1000 монет)</button>
+    </div>
+
+    <script>
+        let coins = 0;
+        const coinsDisplay = document.getElementById('coins');
+
+        function clickCoin() {
+            coins++;
+            updateCoins();
+        }
+
+        function watchAd() {
+            coins += 1000;
+            updateCoins();
+        }
+
+        function updateCoins() {
+            coinsDisplay.textContent = 'Монеты: ' + coins;
+        }
+    </script>
+</body>
+</html>
