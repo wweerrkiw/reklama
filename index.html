@@ -1,73 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimalist Clicker</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .container {
-            text-align: center;
-        }
-        #coins {
-            font-size: 24px;
-            margin: 20px 0;
-        }
-        button {
-            padding: 15px 30px;
-            margin: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: transform 0.1s;
-        }
-        button:active {
-            transform: scale(0.95);
-        }
-        #clickButton {
-            background-color: #4CAF50;
-            color: white;
-        }
-        #adButton {
-            background-color: #2196F3;
-            color: white;
-        }
-    </style>
+    <title>REPKA Holdings – Финансовая революция</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div id="coins">Монеты: 0</div>
-        <button id="clickButton" onclick="clickCoin()">Клик</button>
-        <button id="adButton" onclick="watchAd()">Смотреть рекламу (+1000 монет)</button>
-    </div>
 
-    <script>
-        let coins = 0;
-        const coinsDisplay = document.getElementById('coins');
+    <header>
+        <h1>REPKA Holdings</h1>
+        <p>Финансовая революция начинается здесь!</p>
+        <button class="buy-button">Купить REPKA</button>
+    </header>
 
-        function clickCoin() {
-            coins++;
-            updateCoins();
-        }
+    <section class="faq">
+        <h2>FAQ – Часто задаваемые вопросы</h2>
 
-        function watchAd() {
-            coins += 1000;
-            updateCoins();
-        }
+        <div class="faq-item">
+            <div class="question">Что такое REPKA? ▼</div>
+            <div class="answer">Это не просто криптовалюта – это финансовая революция! Мы берём концепцию холдинга и соединяем её с древней мудростью «тянем-репу».</div>
+        </div>
 
-        function updateCoins() {
-            coinsDisplay.textContent = 'Монеты: ' + coins;
-        }
-    </script>
+        <div class="faq-item">
+            <div class="question">Почему именно репа? ▼</div>
+            <div class="answer">Репа – это символ стойкости и роста. Это не какой-то «щавель пикми», который все забыли через неделю. Это **Nike Pro** среди крипты: надёжно, мощно, для избранных.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Как купить REPKA? ▼</div>
+            <div class="answer">Просто заходишь на наш сайт, жмёшь «Купить REPKA», подключаешь кошелёк – и всё. Да, это действительно так просто. Если кто-то говорит, что сложно, скажи ему: **«Ты чё, TikTok Venom?»**</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Это сигма-инвестиция? ▼</div>
+            <div class="answer">Конечно! Репа – это **sigma** актив. Ты не просто инвестор, ты альфа-фермер, культивирующий репу в суровых условиях рынка. **L + Ratio + Diamond Hands + REPKA Hodler**.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">Когда листинг на Binance? ▼</div>
+            <div class="answer">Брат, сначала мы вытянем репку. Потом дойдём до Binance. Но помни: **«Босс KFC не сразу построил империю»**.</div>
+        </div>
+
+    </section>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
