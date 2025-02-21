@@ -3,48 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REPKA Holdings – Финансовая революция</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Анализ мемкоинов Solana</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        table { width: 90%; margin: 20px auto; border-collapse: collapse; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #f4f4f4; }
+        a { text-decoration: none; color: blue; }
+    </style>
 </head>
 <body>
+    <h2>Мониторинг мемкоинов Solana</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Маркет кап</th>
+                <th>Ликвидность</th>
+                <th>Всего токенов</th>
+                <th>LP</th>
+                <th>Ссылка на Solscan</th>
+            </tr>
+        </thead>
+        <tbody id="tokenTable">
+            <!-- Данные будут загружаться динамически -->
+        </tbody>
+    </table>
 
-    <header>
-        <h1>REPKA Holdings</h1>
-        <p>Финансовая революция начинается здесь!</p>
-        <button class="buy-button">Купить REPKA</button>
-    </header>
+    <script>
+        async function fetchTokens() {
+            try {
+                const response = await fetch('https://api.solscan.io/v1/tokens'); // Пример API, нужно заменить
+                const data = await response.json();
+                const tokens = data.tokens.filter(token => token.name.includes('mem') || token.symbol.includes('MEM'));
+                
+                const tableBody = document.getElementById('tokenTable');
+                tableBody.innerHTML = '';
 
-    <section class="faq">
-        <h2>FAQ – Часто задаваемые вопросы</h2>
+                tokens.forEach(token => {
+                    const row = `<tr>
+                        <td>${token.name}</td>
+                        <td>$${token.market_cap.toLocaleString()}</td>
+                        <td>$${token.liquidity.toLocaleString()}</td>
+                        <td>${token.total_supply.toLocaleString()}</td>
+                        <td>${token.lp || 'N/A'}</td>
+                        <td><a href="https://solscan.io/token/${token.address}" target="_blank">Solscan</a></td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                });
+            } catch (error) {
+                console.error('Ошибка загрузки данных:', error);
+            }
+        }
 
-        <div class="faq-item">
-            <div class="question">Что такое REPKA? ▼</div>
-            <div class="answer">Это не просто криптовалюта – это финансовая революция! Мы берём концепцию холдинга и соединяем её с древней мудростью «тянем-репу».</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="question">Почему именно репа? ▼</div>
-            <div class="answer">Репа – это символ стойкости и роста. Это не какой-то «щавель пикми», который все забыли через неделю. Это **Nike Pro** среди крипты: надёжно, мощно, для избранных.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="question">Как купить REPKA? ▼</div>
-            <div class="answer">Просто заходишь на наш сайт, жмёшь «Купить REPKA», подключаешь кошелёк – и всё. Да, это действительно так просто. Если кто-то говорит, что сложно, скажи ему: **«Ты чё, TikTok Venom?»**</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="question">Это сигма-инвестиция? ▼</div>
-            <div class="answer">Конечно! Репа – это **sigma** актив. Ты не просто инвестор, ты альфа-фермер, культивирующий репу в суровых условиях рынка. **L + Ratio + Diamond Hands + REPKA Hodler**.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="question">Когда листинг на Binance? ▼</div>
-            <div class="answer">Брат, сначала мы вытянем репку. Потом дойдём до Binance. Но помни: **«Босс KFC не сразу построил империю»**.</div>
-        </div>
-
-    </section>
-
-    <script src="script.js"></script>
-
+        fetchTokens();
+    </script>
 </body>
 </html>
